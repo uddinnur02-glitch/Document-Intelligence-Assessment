@@ -1,0 +1,260 @@
+{
+  "generated_at_utc": "2026-11-24T09:39:04.772102+00:00",
+  "scope": "offline synthetic/consented OCR + rule-based invoice extraction (no API, Celery, DB or network)",
+  "metrics": {
+    "total_cases": 5,
+    "processed_cases": 4,
+    "processing_success_rate": 0.8,
+    "expected_outcome_rate": 1.0,
+    "ocr_character_error_rate_micro": 0.0,
+    "ocr_word_error_rate_micro": 0.0,
+    "invoice_field_exact_match_accuracy": 1.0,
+    "labeled_invoice_fields": 32,
+    "mean_elapsed_seconds": 0.289635,
+    "truncated_successful_cases": 0,
+    "page_count_mismatches": 0
+  },
+  "cases": [
+    {
+      "id": "clear_png",
+      "file": "clear_invoice.png",
+      "processed": true,
+      "expected_outcome_met": true,
+      "elapsed_seconds": 0.250814,
+      "error": null,
+      "truncated": false,
+      "pages": 1,
+      "expected_pages": 1,
+      "fields": {
+        "invoice_number": {
+          "expected": "OCR-2026-001",
+          "predicted": "OCR-2026-001",
+          "correct": true
+        },
+        "invoice_date": {
+          "expected": "2026-11-20",
+          "predicted": "2026-11-20",
+          "correct": true
+        },
+        "supplier_name": {
+          "expected": "Demo Medical Supplies",
+          "predicted": "Demo Medical Supplies",
+          "correct": true
+        },
+        "customer_name": {
+          "expected": "Sample Care Center",
+          "predicted": "Sample Care Center",
+          "correct": true
+        },
+        "subtotal": {
+          "expected": "125.00",
+          "predicted": "125.00",
+          "correct": true
+        },
+        "tax": {
+          "expected": "12.50",
+          "predicted": "12.50",
+          "correct": true
+        },
+        "total": {
+          "expected": "137.50",
+          "predicted": "137.50",
+          "correct": true
+        },
+        "currency": {
+          "expected": "USD",
+          "predicted": "USD",
+          "correct": true
+        }
+      },
+      "cer": 0.0,
+      "wer": 0.0
+    },
+    {
+      "id": "degraded_jpeg",
+      "file": "degraded_invoice.jpg",
+      "processed": true,
+      "expected_outcome_met": true,
+      "elapsed_seconds": 0.196494,
+      "error": null,
+      "truncated": false,
+      "pages": 1,
+      "expected_pages": 1,
+      "fields": {
+        "invoice_number": {
+          "expected": "OCR-2026-002",
+          "predicted": "OCR-2026-002",
+          "correct": true
+        },
+        "invoice_date": {
+          "expected": "2026-11-21",
+          "predicted": "2026-11-21",
+          "correct": true
+        },
+        "supplier_name": {
+          "expected": "Example Trading Company",
+          "predicted": "Example Trading Company",
+          "correct": true
+        },
+        "customer_name": {
+          "expected": "Demo Clinic",
+          "predicted": "Demo Clinic",
+          "correct": true
+        },
+        "subtotal": {
+          "expected": "240.00",
+          "predicted": "240.00",
+          "correct": true
+        },
+        "tax": {
+          "expected": "24.00",
+          "predicted": "24.00",
+          "correct": true
+        },
+        "total": {
+          "expected": "264.00",
+          "predicted": "264.00",
+          "correct": true
+        },
+        "currency": {
+          "expected": "USD",
+          "predicted": "USD",
+          "correct": true
+        }
+      },
+      "cer": 0.0,
+      "wer": 0.0
+    },
+    {
+      "id": "tiff_image",
+      "file": "invoice_image.tiff",
+      "processed": true,
+      "expected_outcome_met": true,
+      "elapsed_seconds": 0.23205,
+      "error": null,
+      "truncated": false,
+      "pages": 1,
+      "expected_pages": 1,
+      "fields": {
+        "invoice_number": {
+          "expected": "OCR-2026-001",
+          "predicted": "OCR-2026-001",
+          "correct": true
+        },
+        "invoice_date": {
+          "expected": "2026-11-20",
+          "predicted": "2026-11-20",
+          "correct": true
+        },
+        "supplier_name": {
+          "expected": "Demo Medical Supplies",
+          "predicted": "Demo Medical Supplies",
+          "correct": true
+        },
+        "customer_name": {
+          "expected": "Sample Care Center",
+          "predicted": "Sample Care Center",
+          "correct": true
+        },
+        "subtotal": {
+          "expected": "125.00",
+          "predicted": "125.00",
+          "correct": true
+        },
+        "tax": {
+          "expected": "12.50",
+          "predicted": "12.50",
+          "correct": true
+        },
+        "total": {
+          "expected": "137.50",
+          "predicted": "137.50",
+          "correct": true
+        },
+        "currency": {
+          "expected": "USD",
+          "predicted": "USD",
+          "correct": true
+        }
+      },
+      "cer": 0.0,
+      "wer": 0.0
+    },
+    {
+      "id": "scanned_pdf",
+      "file": "scanned_two_page.pdf",
+      "processed": true,
+      "expected_outcome_met": true,
+      "elapsed_seconds": 0.748404,
+      "error": null,
+      "truncated": false,
+      "pages": 2,
+      "expected_pages": 2,
+      "fields": {
+        "invoice_number": {
+          "expected": "OCR-2026-001",
+          "predicted": "OCR-2026-001",
+          "correct": true
+        },
+        "invoice_date": {
+          "expected": "2026-11-20",
+          "predicted": "2026-11-20",
+          "correct": true
+        },
+        "supplier_name": {
+          "expected": "Demo Medical Supplies",
+          "predicted": "Demo Medical Supplies",
+          "correct": true
+        },
+        "customer_name": {
+          "expected": "Sample Care Center",
+          "predicted": "Sample Care Center",
+          "correct": true
+        },
+        "subtotal": {
+          "expected": "125.00",
+          "predicted": "125.00",
+          "correct": true
+        },
+        "tax": {
+          "expected": "12.50",
+          "predicted": "12.50",
+          "correct": true
+        },
+        "total": {
+          "expected": "137.50",
+          "predicted": "137.50",
+          "correct": true
+        },
+        "currency": {
+          "expected": "USD",
+          "predicted": "USD",
+          "correct": true
+        }
+      },
+      "cer": 0.0,
+      "wer": 0.0
+    },
+    {
+      "id": "corrupted_png",
+      "file": "broken_image.png",
+      "processed": false,
+      "expected_outcome_met": true,
+      "elapsed_seconds": 0.020412,
+      "error": "UnidentifiedImageError: cannot identify image file '/mnt/data/phase10b_work/careguide-document-intelligence/backend/evaluation/ocr_fixtures/broken_image.png'",
+      "truncated": null,
+      "pages": null,
+      "expected_pages": null,
+      "fields": {},
+      "cer": null,
+      "wer": null
+    }
+  ],
+  "limitations": [
+    "OCR CER/WER compare normalized text with exact sequence, so line-order differences may increase error.",
+    "2-page sample uses the first invoice as invoice-field ground truth; OCR text scoring covers both pages.",
+    "Synthetic scans do not establish real-world accuracy or generalization.",
+    "Text is bounded by per-page preview caps; truncated files must be reviewed.",
+    "No timing for upload, Celery, PostgreSQL, model load, indexing or frontend."
+  ]
+}

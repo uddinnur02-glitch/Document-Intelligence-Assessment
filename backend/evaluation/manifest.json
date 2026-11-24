@@ -1,0 +1,37 @@
+{
+  "description": "Synthetic smoke-test labels; replace/add representative, permission-cleared labeled documents for genuine evaluation.",
+  "cases": [
+    {
+      "id": "synthetic_flat_invoice",
+      "path": "docs/invoice_demo.csv",
+      "expected_fields": {
+        "invoice_number": "INV-2026-004",
+        "invoice_date": "2026-11-20",
+        "supplier_name": "ABC Trading Ltd",
+        "customer_name": "Cottage Home Care",
+        "subtotal": "1250.00",
+        "tax": "125.00",
+        "total": "1400.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "synthetic_line_item_invoice",
+      "path": "docs/lineitems.csv",
+      "expected_fields": {
+        "invoice_number": "INV-2026-104",
+        "invoice_date": "2026-11-24",
+        "subtotal": "150.00",
+        "tax": "15.00",
+        "total": "165.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "synthetic_two_page_pdf",
+      "path": "docs/synthetic_2_pages.pdf",
+      "expected_fields": {"invoice_number": "LOAD-00001", "supplier_name": "Synthetic Testing Only", "total": "110.00"}
+    },
+    {"id": "corrupt_pdf", "path": "docs/broken.pdf", "expect_failure": true}
+  ]
+}

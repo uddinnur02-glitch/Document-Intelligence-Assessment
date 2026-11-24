@@ -1,0 +1,12 @@
+Invoice Number,INV-2026-104
+Invoice Date,2026-11-24
+Supplier,ABC Trading Ltd
+Customer,Cottage Home Care
+Currency,USD
+Subtotal,150.00
+Tax,15.00
+Total,165.00
+
+Description,Quantity,Unit Price,Amount
+Disposable gloves,2,50.00,100.00
+Face masks,5,10.00,50.00

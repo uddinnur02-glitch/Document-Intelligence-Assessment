@@ -1,0 +1,35 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Frontend
+node_modules/
+dist/
+.next/
+
+# Local database and runtime files
+*.sqlite
+*.sqlite3
+*.db
+uploads/
+models/
+postgres_data/
+redis_data/
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db
+
+# Benchmark output copied from local runs
+benchmark-output/
+ocr-evaluation-output/
+e2e-evaluation-output/

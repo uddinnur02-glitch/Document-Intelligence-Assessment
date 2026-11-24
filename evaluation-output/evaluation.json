@@ -1,0 +1,180 @@
+{
+  "generated_at_utc": "2026-11-24T07:02:22.293973+00:00",
+  "scope": "offline synchronous extraction + local rule-based invoice parsing (no Celery, DB, network, or semantic indexing)",
+  "metrics": {
+    "total_cases": 4,
+    "processed_cases": 3,
+    "processing_success_rate": 0.75,
+    "processing_failure_rate": 0.25,
+    "expected_outcome_rate": 1.0,
+    "labeled_fields": 17,
+    "field_exact_match_accuracy": 0.882353,
+    "field_precision_nonnull": 1.0,
+    "mean_elapsed_seconds": 0.068927,
+    "median_elapsed_seconds": 0.024154,
+    "max_elapsed_seconds": 0.226619,
+    "documents_per_second": 14.50814,
+    "truncated_successful_cases": 0
+  },
+  "cases": [
+    {
+      "case": "synthetic_flat_invoice",
+      "file": "docs/invoice_demo.csv",
+      "type": ".csv",
+      "expected_failure": false,
+      "processed": true,
+      "expectation_met": true,
+      "elapsed_seconds": 0.047431,
+      "page_count": 0,
+      "sheet_count": 1,
+      "extracted_chars": 197,
+      "truncated": false,
+      "line_item_count": 0,
+      "fields": {
+        "invoice_number": {
+          "expected": "INV-2026-004",
+          "predicted": "INV-2026-004",
+          "correct": true
+        },
+        "invoice_date": {
+          "expected": "2026-11-20",
+          "predicted": null,
+          "correct": false
+        },
+        "supplier_name": {
+          "expected": "ABC Trading Ltd",
+          "predicted": "ABC Trading Ltd",
+          "correct": true
+        },
+        "customer_name": {
+          "expected": "Cottage Home Care",
+          "predicted": "Cottage Home Care",
+          "correct": true
+        },
+        "subtotal": {
+          "expected": "1250.00",
+          "predicted": "1250.00",
+          "correct": true
+        },
+        "tax": {
+          "expected": "125.00",
+          "predicted": "125.00",
+          "correct": true
+        },
+        "total": {
+          "expected": "1400.00",
+          "predicted": "1400.00",
+          "correct": true
+        },
+        "currency": {
+          "expected": "USD",
+          "predicted": "USD",
+          "correct": true
+        }
+      },
+      "error": null
+    },
+    {
+      "case": "synthetic_line_item_invoice",
+      "file": "docs/lineitems.csv",
+      "type": ".csv",
+      "expected_failure": false,
+      "processed": true,
+      "expectation_met": true,
+      "elapsed_seconds": 0.000877,
+      "page_count": 0,
+      "sheet_count": 1,
+      "extracted_chars": 306,
+      "truncated": false,
+      "line_item_count": 2,
+      "fields": {
+        "invoice_number": {
+          "expected": "INV-2026-104",
+          "predicted": "INV-2026-104",
+          "correct": true
+        },
+        "invoice_date": {
+          "expected": "2026-11-24",
+          "predicted": null,
+          "correct": false
+        },
+        "subtotal": {
+          "expected": "150.00",
+          "predicted": "150.00",
+          "correct": true
+        },
+        "tax": {
+          "expected": "15.00",
+          "predicted": "15.00",
+          "correct": true
+        },
+        "total": {
+          "expected": "165.00",
+          "predicted": "165.00",
+          "correct": true
+        },
+        "currency": {
+          "expected": "USD",
+          "predicted": "USD",
+          "correct": true
+        }
+      },
+      "error": null
+    },
+    {
+      "case": "synthetic_two_page_pdf",
+      "file": "docs/synthetic_2_pages.pdf",
+      "type": ".pdf",
+      "expected_failure": false,
+      "processed": true,
+      "expectation_met": true,
+      "elapsed_seconds": 0.226619,
+      "page_count": 2,
+      "sheet_count": 0,
+      "extracted_chars": 268,
+      "truncated": false,
+      "line_item_count": 0,
+      "fields": {
+        "invoice_number": {
+          "expected": "LOAD-00001",
+          "predicted": "LOAD-00001",
+          "correct": true
+        },
+        "supplier_name": {
+          "expected": "Synthetic Testing Only",
+          "predicted": "Synthetic Testing Only",
+          "correct": true
+        },
+        "total": {
+          "expected": "110.00",
+          "predicted": "110.00",
+          "correct": true
+        }
+      },
+      "error": null
+    },
+    {
+      "case": "corrupt_pdf",
+      "file": "docs/broken.pdf",
+      "type": ".pdf",
+      "expected_failure": true,
+      "processed": false,
+      "expectation_met": true,
+      "elapsed_seconds": 0.00078,
+      "page_count": null,
+      "sheet_count": null,
+      "extracted_chars": null,
+      "truncated": null,
+      "line_item_count": null,
+      "fields": {},
+      "error": "FileDataError: Failed to open file '/app/evaluation/docs/broken.pdf' as type pdf."
+    }
+  ],
+  "cautions": [
+    "These measurements are only valid for the labeled manifest on the machine that ran the evaluation.",
+    "Field exact-match scores are computed over explicitly labeled fields, including labeled nulls.",
+    "Timing excludes upload, queue delay, database persistence, and embedding generation.",
+    "Synthetic examples cannot establish real-world invoice accuracy.",
+    "A completed job may still contain truncated text; inspect truncated_successful_cases."
+  ]
+}

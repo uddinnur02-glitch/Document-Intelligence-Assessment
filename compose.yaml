@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: careguide
+      POSTGRES_PASSWORD: localdevpassword
+      POSTGRES_DB: careguide
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U careguide -d careguide"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+  backend:
+    build: ./backend
+    environment: &backend_env
+      DATABASE_URL: postgresql+psycopg://careguide:localdevpassword@db:5432/careguide
+      UPLOAD_DIR: /app/uploads
+      REDIS_URL: redis://redis:6379/0
+      MAX_UPLOAD_MB: 20
+      CARE_GUIDE_API_KEY: ${CARE_GUIDE_API_KEY:-}
+      MAX_PDF_PAGES: 1200
+      SEMANTIC_ENABLED: "true"
+      EMBEDDING_CACHE: /app/models
+    volumes:
+      - uploaded_files:/app/uploads
+      - model_cache:/app/models
+      - ./examples:/examples:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+  worker:
+    build: ./backend
+    command: ["celery", "-A", "app.tasks.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    environment: *backend_env
+    volumes:
+      - uploaded_files:/app/uploads
+      - model_cache:/app/models
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_PROXY_TARGET: http://backend:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+volumes:
+  pg_data:
+  uploaded_files:
+  redis_data:
+  model_cache:

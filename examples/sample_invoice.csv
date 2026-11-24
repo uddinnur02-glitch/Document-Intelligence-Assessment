@@ -1,0 +1,2 @@
+invoice_number,supplier,subtotal,tax,total
+INV-2026-001,Example Supplies Ltd,100.00,10.00,110.00

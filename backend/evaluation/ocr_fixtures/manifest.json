@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "id": "clear_png",
+      "path": "clear_invoice.png",
+      "expected_text": "SYNTHETIC TEST INVOICE\nInvoice Number: OCR-2026-001\nInvoice Date: 2026-11-20\nSupplier: Demo Medical Supplies\nCustomer: Sample Care Center\nSubtotal: 125.00\nTax: 12.50\nTotal: 137.50\nCurrency: USD",
+      "expected_fields": {
+        "invoice_number": "OCR-2026-001",
+        "invoice_date": "2026-11-20",
+        "supplier_name": "Demo Medical Supplies",
+        "customer_name": "Sample Care Center",
+        "subtotal": "125.00",
+        "tax": "12.50",
+        "total": "137.50",
+        "currency": "USD"
+      },
+      "expected_pages": 1,
+      "expect_failure": false
+    },
+    {
+      "id": "degraded_jpeg",
+      "path": "degraded_invoice.jpg",
+      "expected_text": "SYNTHETIC TEST INVOICE\nInvoice Number: OCR-2026-002\nInvoice Date: 2026-11-21\nSupplier: Example Trading Company\nCustomer: Demo Clinic\nSubtotal: 240.00\nTax: 24.00\nTotal: 264.00\nCurrency: USD",
+      "expected_fields": {
+        "invoice_number": "OCR-2026-002",
+        "invoice_date": "2026-11-21",
+        "supplier_name": "Example Trading Company",
+        "customer_name": "Demo Clinic",
+        "subtotal": "240.00",
+        "tax": "24.00",
+        "total": "264.00",
+        "currency": "USD"
+      },
+      "expected_pages": 1,
+      "expect_failure": false
+    },
+    {
+      "id": "tiff_image",
+      "path": "invoice_image.tiff",
+      "expected_text": "SYNTHETIC TEST INVOICE\nInvoice Number: OCR-2026-001\nInvoice Date: 2026-11-20\nSupplier: Demo Medical Supplies\nCustomer: Sample Care Center\nSubtotal: 125.00\nTax: 12.50\nTotal: 137.50\nCurrency: USD",
+      "expected_fields": {
+        "invoice_number": "OCR-2026-001",
+        "invoice_date": "2026-11-20",
+        "supplier_name": "Demo Medical Supplies",
+        "customer_name": "Sample Care Center",
+        "subtotal": "125.00",
+        "tax": "12.50",
+        "total": "137.50",
+        "currency": "USD"
+      },
+      "expected_pages": 1,
+      "expect_failure": false
+    },
+    {
+      "id": "scanned_pdf",
+      "path": "scanned_two_page.pdf",
+      "expected_text": "SYNTHETIC TEST INVOICE\nInvoice Number: OCR-2026-001\nInvoice Date: 2026-11-20\nSupplier: Demo Medical Supplies\nCustomer: Sample Care Center\nSubtotal: 125.00\nTax: 12.50\nTotal: 137.50\nCurrency: USD\nSYNTHETIC TEST INVOICE\nInvoice Number: OCR-2026-002\nInvoice Date: 2026-11-21\nSupplier: Example Trading Company\nCustomer: Demo Clinic\nSubtotal: 240.00\nTax: 24.00\nTotal: 264.00\nCurrency: USD",
+      "expected_fields": {
+        "invoice_number": "OCR-2026-001",
+        "invoice_date": "2026-11-20",
+        "supplier_name": "Demo Medical Supplies",
+        "customer_name": "Sample Care Center",
+        "subtotal": "125.00",
+        "tax": "12.50",
+        "total": "137.50",
+        "currency": "USD"
+      },
+      "expected_pages": 2,
+      "expect_failure": false
+    },
+    {
+      "id": "corrupted_png",
+      "path": "broken_image.png",
+      "expect_failure": true
+    }
+  ]
+}
